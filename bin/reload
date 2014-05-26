@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+var grunt = require('grunt');
+var path = require('path');
+var fs = require('fs');
+var program = require('commander');
+var options = {
+  target : '.'
+};
+
+program
+  .option('-t, --target <files>', 'files or directories to watch')
+  .parse(process.argv);
+
+if(program.target) {
+  options.target = program.target;
+}
+
+try {
+  options.target = getTarget(options.target);
+} catch(e){
+  console.log(program.target, 'may not existed');
+  console.log('watch stopped');
+  return
+}
+
+function getTarget(target) {
+  var isDirectory = fs.lstatSync(target).isDirectory();
+  return isDirectory ? path.resolve(target) + '/**' : target;
+}
+
+console.log('watching ->', options.target);
+
+var _opt = {
+  base : path.resolve(process.cwd()),
+  gruntfile : path.resolve(__dirname, '../Gruntfile.js')
+};
+grunt.util._.extend(_opt, options);
+grunt.tasks([], _opt);

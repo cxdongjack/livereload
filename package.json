@@ -1,0 +1,25 @@
+{
+  "name": "reload",
+  "version": "1.0.0",
+  "description": "The encapsulation for grunt-contrib-watch, and supply a seajs reload plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.2",
+    "commander": "~2.0.0"
+  },
+  "keywords": [
+    "grunt",
+    "grunt-contrib-watch",
+    "livereload",
+    "seajs"
+  ],
+  "author": "chenxiaodong",
+  "license": "BSD",
+  "devDependencies": {
+    "open": "0.0.5"
+  }
+}
