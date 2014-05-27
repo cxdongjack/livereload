@@ -11,6 +11,9 @@
     "grunt-contrib-watch": "~0.5.2",
     "commander": "~2.0.0"
   },
+  "bin" : {
+    "reload" : "bin/reload"
+  },
   "keywords": [
     "grunt",
     "grunt-contrib-watch",
