@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         livereload: true,
       },
       scripts: {
-        files: [grunt.option('target')],
+        files: grunt.option('target'),
       },
     },
   });

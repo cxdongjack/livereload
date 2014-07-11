@@ -8,7 +8,7 @@ var options = {
 };
 
 program
-  .option('-t, --target <files>', 'files or directories to watch')
+  .option('-t, --target <files>', 'files or directories to watch, "," to split more section')
   .parse(process.argv);
 
 if(program.target) {
@@ -24,8 +24,11 @@ try {
 }
 
 function getTarget(target) {
-  var isDirectory = fs.lstatSync(target).isDirectory();
-  return isDirectory ? path.resolve(target) + '/**' : target;
+  var list = target.split(',');
+  return list.map(function(target) {
+    var isDirectory = fs.lstatSync(target).isDirectory();
+    return isDirectory ? path.resolve(target) + '/**' : target;
+  })
 }
 
 console.log('watching ->', options.target);
